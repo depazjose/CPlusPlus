@@ -50,19 +50,22 @@ void Process::initProcess(){
   {
      // init the check process of each item
      if (this->processInputItems()==0) {
+
+       // init sort process
+       this->sortItems(_parameters[2]);
        std::cout<<MSN_INF_PROC_E<<std::endl;
      }
      else
      {
        //process terminated prematurely
        std::cout<<MSN_INF_ITEM_C<<std::endl;
-       std::cout<<MSN_INF_FILE_P<<std::endl;
+       std::cout<<MSN_INF_INFILE_P<<std::endl;
      }
   }
   else
   {
     //process terminated prematurely
-    std::cout<<MSN_INF_FILE_P<<std::endl;
+    std::cout<<MSN_INF_INFILE_P<<std::endl;
   }
 
 }
@@ -85,16 +88,16 @@ bool Process::openInputFile(std::string pathFileName){
   switch(retValue){
     case 0:{
       std::cout<<"\ninputFile: "<<_parameters[0]<<std::endl;
-      std::cout<<"\t"<<MSN_ERR_FILE<<std::endl<<std::endl;
+      std::cout<<"\t"<<MSN_ERR_INFILE<<std::endl<<std::endl;
       break;
     }
     case 1:{
-      std::cout<<"\n"<<MSN_INF_FILE_R<<std::endl;
+      std::cout<<"\n"<<MSN_INF_INFILE_R<<std::endl;
       ret = true;
       break;
     }
     case 2:{
-      std::cout<<"\n"<<MSN_INF_FILE<<std::endl;
+      std::cout<<"\n"<<MSN_INF_INFILE<<std::endl;
       break;
     }
     default:{
@@ -116,8 +119,7 @@ bool Process::openInputFile(std::string pathFileName){
 int Process::processInputItems(){
   int ret = 0;
 
-  std::list<std::string> itemsInputFile =
-  this->_readFile->getFileItems();
+  itemsInputFile = this->_readFile->getFileItems();
 
   delete this->_readFile;
 
@@ -138,4 +140,12 @@ int Process::processInputItems(){
   }
 
   return ret;
+}
+
+/*
+* Performs the sort process using <alg> algorithm
+*/
+void Process::sortItems(std::string alg){
+
+
 }

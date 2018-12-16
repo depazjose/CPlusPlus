@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.5.1)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(ProjectName ProducerConsumer)
 project(${ProjectName})
-set(CPP11 "-std=c++11" CACHE STRING "compile flags" FORCE)
+
 set(CMAKE_CXX_STANDARD 11)
 message(STATUS "Using C++11")
 
@@ -23,7 +23,7 @@ set(MAXCHARS_LINE 100)
 set(USEMAX_DEFINITIONS TRUE)
 
 # Set DEBUG mode
-set(DEBUG_MODE true)
+set(DEBUG_MODE false)
 
 message(STATUS "=====================================================================")
 message(STATUS "AUTHOR:  " ${AUTHOR})
